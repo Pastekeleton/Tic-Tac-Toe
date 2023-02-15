@@ -8,6 +8,7 @@ function init() {
         '', '', '',
         '', '', ''
     ];
+    render();
 };
 init();
 
@@ -18,5 +19,6 @@ function render() {
 };
 
 /*----- cached element references -----*/
+const squares = Array.from(document.querySelectorAll('#board div'));
 /*----- event listeners -----*/
 /*----- functions -----*/
