@@ -17,10 +17,13 @@ function render() {
     board.forEach(function(mark, index){
         squares[index].textContent = mark;
     });
+    messages.textContent = `It's ${turn}'s turn!`;
 };
 
 /*----- cached element references -----*/
 const squares = Array.from(document.querySelectorAll('#board div'));
+const messages = document.querySelector('h2');
+
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleTurn);
 
@@ -30,5 +33,6 @@ function handleTurn(event) {
         return square === event.target;
     });
     board[idx] = turn;
-    console.log(board);
+    turn = turn === 'X' ? 'O' : 'X';
+    render();
 };
