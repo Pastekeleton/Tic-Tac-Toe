@@ -2,6 +2,8 @@
 /*----- app's state (variables) -----*/
 let board;
 let turn = 'X';
+let win;
+win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
 
 function init() {
     board = [
