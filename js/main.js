@@ -10,11 +10,14 @@ const winningCombos = [
     [2, 4, 6]
 ];
 
+/*----- cached element references -----*/
+const squares = Array.from(document.querySelectorAll('#board div'));
+const messages = document.querySelector('h2');
+
 /*----- app's state (variables) -----*/
-let board;
+let board =[];
 let turn = 'X';
 let win;
-win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
 
 function init() {
     board = [
@@ -25,6 +28,7 @@ function init() {
     render();
 };
 init();
+win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
 
 function render() {
     board.forEach(function(mark, index){
@@ -33,12 +37,9 @@ function render() {
     messages.textContent = win === 'T' ? `That's a tie, queen!` : win ? `${win} wins the game!` : `It's ${turn}'s turn!`;
 };
 
-/*----- cached element references -----*/
-const squares = Array.from(document.querySelectorAll('#board div'));
-const messages = document.querySelector('h2');
-
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click', handleTurn);
+document.getElementById('reset-button').addEventListener('click', init);
 
 /*----- functions -----*/
 function getWinner() {
